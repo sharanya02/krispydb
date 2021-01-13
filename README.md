@@ -1,3 +1,1 @@
-# K.R.I.S.Y
-## Fresh and Hot!
-# krispydb
+KRISPY DB
