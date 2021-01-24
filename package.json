@@ -1,0 +1,34 @@
+{
+  "dependencies": {
+    "discord.js": "^12.5.1",
+    "dotenv": "^8.2.0",
+    "lint": "^0.7.0",
+    "nodemon": "^2.0.7",
+    "pg": "^8.5.1",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^6.4.0",
+    "uuid": "^8.3.2",
+    "uuid4": "^2.0.2"
+  },
+  "name": "krispy",
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "devstart": "nodemon",
+    "lint": "standard --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KrishChatterjie/krispy.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KrishChatterjie/krispy/issues"
+  },
+  "homepage": "https://github.com/KrishChatterjie/krispy#readme",
+  "devDependencies": {}
+}
