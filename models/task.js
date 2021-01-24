@@ -1,5 +1,5 @@
-const sequelize = require('sequelize');
-const db = require('../database/connection');
+const sequelize = require('sequelize')
+const db = require('../database/connection')
 
 const schema = {
   taskId: {
@@ -17,26 +17,26 @@ const schema = {
       model: 'users',
       key: 'UserId'
     }
-},
-  
+  },
+
   task_status: {
     type: sequelize.INTEGER,
     allowNull: false,
     defaultValue: 0
   }
-};
+}
 
 const options = {
   timestamps: true
-};
-const task = db.define('task', schema, options);
+}
+const task = db.define('task', schema, options)
 
 task.sync({ alter: true })
   .then(() => {
-    console.log('task Migration Made');
+    console.log('task Migration Made')
   })
   .catch(err => {
-    console.log('An Error Occurred:' + err);
-  });
+    console.log('An Error Occurred:' + err)
+  })
 
-module.exports = task;
+module.exports = task

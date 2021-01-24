@@ -9,7 +9,7 @@
 //         .map(r => `${r.id},${r.name}`);
 //         if (rolemap.length > 1024) rolemap = "To many roles to display";
 //         if (!rolemap) rolemap = "No roles";
-        
+
 //         let roles = new Array();
 //         for (const role of rolemap) {
 //             let roleData = role.split(',');
@@ -17,7 +17,7 @@
 //         }
 //         // roles -> a 2d array with role names and corresponding ids
 //         // database WORK, update existing users or create new
-        
+
 //         let users = new Array();
 //         guild.members.fetch().then(members => {
 //             members.map(member => {
@@ -55,10 +55,10 @@
 //         // .map(r => `${r.id},${r.name}`);
 //         // if (rolemap.length > 1024) rolemap = "To many roles to display";
 //         // if (!rolemap) rolemap = "No roles";
-        
+
 //         let roles = getRoles(guild);
 //         // roles -> a 2d array with role names and corresponding ids
-        
+
 //         let users = new Array();
 //         guild.members.fetch().then(members => {
 //             members.map(member => {
@@ -77,16 +77,16 @@
 //                     }
 //                 }
 //             }
-    
+
 //             // role_user -> 2d array with role id and list of names
 //             // database WORK, update esxisting users or create new
-    
+
 //             // --------- NEW STUFF
 //         });
 //     },
 //     getUsers : (guild, role) => {
 //         //if role or user no mentioned in message, role = @everyone
-//         // all 
+//         // all
 
 //         let users = new Array();
 //         guild.members.fetch().then(members => {
@@ -109,27 +109,26 @@
 //  }
 
 async function getUsers (guild, role) {
-    //if role or user no mentioned in message, role = @everyone
-    // all 
-    // return await pranjal(guild, role);
-    let usersReqd = new Array();
-    let users = new Array();
-    role_id = role.id;
-    let members = await guild.members.fetch();
-    members.map(member => {
-            users.push([member.user.id, member.user.username]);
-        });
-        for (const user of users) {
-            user_id = user[0];
-            user_obj = guild.members.cache.get(user_id);
-            if (user_obj.roles.cache.some((role) => role_id == role.id)) {
-                usersReqd.push(user_id);
-            }
-        }
-        return usersReqd;
-        // role_user -> 2d array with role id and list of names
-        // database WORK, update existing users or create new
-    };
+  // if role or user no mentioned in message, role = @everyone
+  // all
+  // return await pranjal(guild, role);
+  const usersReqd = new Array()
+  const users = new Array()
+  role_id = role.id
+  const members = await guild.members.fetch()
+  members.map(member => {
+    users.push([member.user.id, member.user.username])
+  })
+  for (const user of users) {
+    user_id = user[0]
+    user_obj = guild.members.cache.get(user_id)
+    if (user_obj.roles.cache.some((role) => role_id == role.id)) {
+      usersReqd.push(user_id)
+    }
+  }
+  return usersReqd
+  // role_user -> 2d array with role id and list of names
+  // database WORK, update existing users or create new
+};
 
-
-module.exports = getUsers;
+module.exports = getUsers

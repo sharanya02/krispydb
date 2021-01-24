@@ -1,15 +1,4 @@
 {
-  "dependencies": {
-    "discord.js": "^12.5.1",
-    "dotenv": "^8.2.0",
-    "lint": "^0.7.0",
-    "nodemon": "^2.0.7",
-    "pg": "^8.5.1",
-    "pg-hstore": "^2.3.3",
-    "sequelize": "^6.4.0",
-    "uuid": "^8.3.2",
-    "uuid4": "^2.0.2"
-  },
   "name": "krispy",
   "description": "",
   "version": "1.0.0",
@@ -30,5 +19,18 @@
     "url": "https://github.com/KrishChatterjie/krispy/issues"
   },
   "homepage": "https://github.com/KrishChatterjie/krispy#readme",
-  "devDependencies": {}
+  "dependencies": {
+    "discord.js": "^12.5.1",
+    "dotenv": "^8.2.0",
+    "lint": "^0.7.0",
+    "pg": "^8.5.1",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^6.4.0",
+    "uuid": "^8.3.2",
+    "uuid4": "^2.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7",
+    "standard": "^16.0.3"
+  }
 }

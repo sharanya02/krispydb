@@ -4,68 +4,59 @@
 // ~progress @user <taskname>: lists the progress of the task specified
 // ~progress @user -a: lists the task history of the user
 
-
 module.exports = {
-    name: 'progress',
-	aliases: ["taskprogress"],
-	usage: "@role/@user (optional) [task name]",
-	description: 'Shows the progress of a specific task',
-	execute(message, args) {
-		message.channel.send('A lot of progress but not getting anywhere :)');
-		
-		
-		let users = message.mentions.users;
-		let assignees_id = new Array();
-		for (const user of users) {
-			let user_copy = user.slice();
-			assignees_id.push(user_copy.shift());
-		}
+  name: 'progress',
+  aliases: ['taskprogress'],
+  usage: '@role/@user (optional) [task name]',
+  description: 'Shows the progress of a specific task',
+  execute (message, args) {
+    message.channel.send('A lot of progress but not getting anywhere :)')
 
-		let taskName = "";
-		let lenArgs = args.length;
-		for(let i=lenArgs-1;i>=0;i--){
-			let word = args[i];
-			if(!word.startsWith('<')){
-				taskName = word+" "+taskName;
-			}
-			else {
-				taskName = taskName.trim();
-				break;
-			}
-		}
+    const users = message.mentions.users
+    const assignees_id = new Array()
+    for (const user of users) {
+      const user_copy = user.slice()
+      assignees_id.push(user_copy.shift())
+    }
 
-		let assignerId = message.author.id;
+    let taskName = ''
+    const lenArgs = args.length
+    for (let i = lenArgs - 1; i >= 0; i--) {
+      const word = args[i]
+      if (!word.startsWith('<')) {
+        taskName = word + ' ' + taskName
+      } else {
+        taskName = taskName.trim()
+        break
+      }
+    }
 
-		// console.log(assignees_id);
-		// console.log("-----------------");
-		// console.log(assignerId);
-		// console.log("-----------------");
-		// console.log(taskName);
+    const assignerId = message.author.id
 
+    // console.log(assignees_id);
+    // console.log("-----------------");
+    // console.log(assignerId);
+    // console.log("-----------------");
+    // console.log(taskName);
 
-		message.mentions.users.map(user => {
+    message.mentions.users.map(user => {
+      user.send(taskName + '\n\n**Assigned by:** <@' + message.author + '>', {
+        split: true
+      })
+        .then(() => {
+          if (message.channel.type !== 'dm') {
+            message.channel.send('I\'ve assigned and sent <@' + user + '> the task.')
+          }
+        })
+        .catch(() => message.reply('Something went wrong on <@' + user + '>\'s end :('))
+    })
 
-			user.send(taskName + `\n\n**Assigned by:** <@` + message.author+`>`, {
-				split: true,
-			})
-			.then(() => {
-				if (message.channel.type !== "dm") {
-					message.channel.send(`I\'ve assigned and sent <@` + user + `> the task.`);
-				}
-			})
-			.catch(() => message.reply(`Something went wrong on <@` + user + `>'s end :(`));
+    let user = ''
 
-		})
-
-
-
-		var user = "";
-		
-		
-		if(message.mentions.users.first()==null){
-			user = message.author;
-		} else {
-			user = message.mentions.users.first();
-		}
-	},
-};
+    if (message.mentions.users.first() == null) {
+      user = message.author
+    } else {
+      user = message.mentions.users.first()
+    }
+  }
+}
