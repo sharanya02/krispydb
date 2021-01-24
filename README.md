@@ -1,2 +1,2 @@
-# K.R.I.S.Y
+# K.R.I.S.P.Y
 ## Fresh and Hot!
